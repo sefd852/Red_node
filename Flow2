@@ -1,0 +1,118 @@
+[
+    {
+        "id": "808ee635.d067d8",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7f711fb.a24aae",
+        "type": "inject",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "a4145baf.88f438"
+            ]
+        ]
+    },
+    {
+        "id": "a4145baf.88f438",
+        "type": "function",
+        "z": "808ee635.d067d8",
+        "name": "Payload",
+        "func": "msg.headers={\n    deviceKey: \"BCve1urEYIIvzVNI\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "c3963b8e.339c28",
+                "e6ce6a7d.646878"
+            ]
+        ]
+    },
+    {
+        "id": "c3963b8e.339c28",
+        "type": "http request",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/D360XOPV/datachannels/Temp/datapoints.csv",
+        "tls": "",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "d39d67d1.53f6b8",
+                "5b6ade19.e5b92"
+            ]
+        ]
+    },
+    {
+        "id": "d39d67d1.53f6b8",
+        "type": "http response",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 310,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5b6ade19.e5b92",
+        "type": "debug",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 330,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e6ce6a7d.646878",
+        "type": "http request",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/D360XOPV/datachannels/Humi/datapoints.csv",
+        "tls": "",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "547cb522.43813c",
+                "5b6ade19.e5b92"
+            ]
+        ]
+    },
+    {
+        "id": "547cb522.43813c",
+        "type": "http response",
+        "z": "808ee635.d067d8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 310,
+        "y": 260,
+        "wires": []
+    }
+]
